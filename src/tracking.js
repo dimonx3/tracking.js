@@ -1,5 +1,15 @@
+if (typeof global !== 'undefined') {
+  global.window = {};
+  global.document = {};
+  global.navigator = {};
+}
+
 (function(window, undefined) {
-  window.tracking = window.tracking || {};
+    if (typeof global !== 'undefined') {
+        global.tracking = global.tracking || {};
+    } else {
+        window.tracking = window.tracking || {};
+    }
 
   /**
    * Inherit the prototype methods from one constructor into another.
@@ -283,3 +293,5 @@
     navigator.mozGetUserMedia || navigator.msGetUserMedia;
   }
 }(window));
+
+module.exports = tracking;
